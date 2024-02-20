@@ -17,7 +17,7 @@ You can create your custome middleware but it's must be in the app/http/middlewa
 
 To create a new middleware, use the make:middleware Vania-cli command:
 
-```dart
+```shell
 vania make:middleware custom_middleware
 ```
 
@@ -37,8 +37,8 @@ class CustomMiddleware extends Middleware {
   }
 }
 ```
-As you can see, if the given token does not match our secret token, the middleware will return an HTTP exception to the client; otherwise, the request will be passed further into the application. To pass the request deeper into the application (allowing the middleware to "pass"), you should call the 'next?handle(req)' callback with the request.
 
+As you can see, if the given token does not match our secret token, the middleware will return an HTTP exception to the client; otherwise, the request will be passed further into the application. To pass the request deeper into the application (allowing the middleware to "pass"), you should call the 'next?handle(req)' callback with the request.
 
 ## Assigning Middleware to Routes
 
@@ -53,7 +53,6 @@ Middleware method accept list of middlewares
 ```dart
 Router.get("/User", (){}).middleware([AuthenticateMiddleware(),CustomMiddleware()]);
 ```
-
 
 ## Middleware Groups
 

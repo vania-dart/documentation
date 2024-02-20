@@ -7,7 +7,11 @@ sidebar_position: 4
 
 ## Introduction
 
-class provides an object-oriented way to interact with the current HTTP request being handled by your application as well as retrieve the input, files that were submitted with the request.
+The Requests class in Vania offers a convenient way to work with the incoming HTTP requests that your application receives. It acts as a bridge between your application and the data sent by the client's browser.
+
+With the Requests class, you can easily access information about the current request, such as the data submitted by the user, any files uploaded with the request, and other relevant details.
+
+By utilizing the Requests class, developers can efficiently retrieve and process user input, handle file uploads, and perform various operations based on the incoming request data. This object-oriented approach simplifies the handling of HTTP requests within your application, enabling you to build responsive and interactive web experiences without unnecessary complexity.
 
 ## Accessing the Request
 

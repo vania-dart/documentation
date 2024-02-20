@@ -12,8 +12,7 @@ Migrations are like version control for your database, allowing your team to def
 
 You may use the make:migration Vania-cli command to generate a database migration. The new migration will be placed in your database/migrations directory:
 
-
-```dart
+```shell
  vania make:migration create_posts_table
 ```
 
@@ -25,7 +24,7 @@ A migration class extends Migration base class from Vania and contains construct
 
 ## Configuring the Database Connection
 
-In ***config/database.dart***, you can specify your database information such as host, port, username, password, and database name.
+In `config/database.dart`, you can specify your database information such as host, port, username, password, and database name.
 
 ```dart
 DatabaseConfig databaseConfig = DatabaseConfig(
@@ -66,9 +65,9 @@ vania migrate
 
 To create a new database table, use the createTableNotExists or createTable  method. These methods accepts two arguments: the first is the name of the table, while the second is a closure:
 
-The function ***createTableNotExists*** first checks if the table does not exist, and then tries to create the table
+The function `createTableNotExists` first checks if the table does not exist, and then tries to create the table
 
-The function ***createTable*** first drops the old table and then tries to create a new one
+The function `createTable` first drops the old table and then tries to create a new one
 
 ```dart
 await createTableNotExists('TableName', () {
