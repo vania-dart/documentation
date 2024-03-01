@@ -6,7 +6,7 @@ sidebar_position: 1
 
 # Routeing
 
-## Introduction:
+## Introduction
 
 In Vania, routes are the pathways that direct incoming requests from the client's browser to specific handlers or controllers within your application. These routes are defined in dedicated route files located in the `routes` directory of your project.
 
@@ -45,8 +45,11 @@ The `basePrefix` method in Vania's router allows you to set a base prefix for al
 For example, if you set the base prefix to `'api'`, all routes defined within the router will have `'api'` prefixed to their URIs. This feature is particularly useful when you have a set of routes that share a common base path, such as API endpoints.
 
 Usage:
+
 ```dart
+
 Router().basePrefix('api');
+
 ```
 
 With this base prefix set, any routes registered within the router will automatically include `'api'` at the beginning of their URIs. This helps maintain consistency and clarity in your application's routing structure.
@@ -143,4 +146,4 @@ class WebSocketRoute implements Route {
 }
 ```
 
-This revision clarifies the usage of routes in Vania and improves readability.
+This revision clarifies the usage of routes in Vania and improves readability

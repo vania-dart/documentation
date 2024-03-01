@@ -11,7 +11,7 @@ Vania offers various approaches to validate incoming data in your application. W
 
 With a comprehensive set of validation rules, Vania enables you to validate data conveniently, This guide will cover each validation rule extensively, ensuring you are well-acquainted with Vania's validation capabilities.
 
-## Simple Validation Example:
+## Simple Validation Example
 
 ```dart
 Future<Response> index(Request req) async {
@@ -22,7 +22,7 @@ req.validate({
 }
 ```
 
-## Validation with Custom Messages:
+## Validation with Custom Messages
 
 ```dart
 Future<Response> index(Request req) async {
@@ -37,9 +37,9 @@ req.validate({ 'name': 'required|string|alpha', 'email' : 'required|email', },
 }
 ```
 
-## Nested Validation:
+## Nested Validation
 
-### Nested Validation Example with JSON Data:
+### Nested Validation Example with JSON Data
 
 Validation
 
@@ -61,7 +61,7 @@ Request body
 }
 ```
 
-### Nested Validation with Array:
+### Nested Validation with Array
 
 Validation
 

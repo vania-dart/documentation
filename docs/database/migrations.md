@@ -37,7 +37,29 @@ DatabaseConfig databaseConfig = DatabaseConfig(
 );
 ```
 
-Note: If you change the variable name databaseConfig, make sure to update it in the database/migrate.dart file as well.
+:::info
+
+If your MySQL server doesn't support SSL mode you can add `sslmode: false` in the config
+
+Default is true
+
+```dart
+DatabaseConfig databaseConfig = DatabaseConfig(
+    driver: MysqlDriver(),
+    host: '127.0.0.1',
+    database: 'vania',
+    username: 'root',
+    password: '123456',
+    port: 3306,
+    sslmode:false
+);
+```
+
+:::
+
+:::info
+If you change the variable name databaseConfig, make sure to update it in the database/migrate.dart file as well.
+:::
 
 After configuring your database, you need to place the databaseConfig variable in config/app.dart within the database section of the config map variable. The value associated with the 'database' key, which is currently null, should be replaced with databaseConfig.
 
