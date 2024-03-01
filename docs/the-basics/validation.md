@@ -93,7 +93,7 @@ Request body
 }
 ```
 
-:::Tip
+:::tip
 Validation rules are applicable within route closures or controller methods, providing flexibility and ease of use.
 :::
 
@@ -116,7 +116,7 @@ req.validate({
 });
 ```
 
-:::Info
+:::info
 Name is required if status is inactive.
 :::
 

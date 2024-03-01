@@ -36,6 +36,10 @@ Open the newly created project and start the development server.
 vania serve
 ```
 
+:::tip
+You can also include the --vm flag to enable VM service.
+:::
+
 ## Create a Production Build 📦
 
 Create a production build:

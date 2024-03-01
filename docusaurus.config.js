@@ -124,7 +124,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Vania(vdart.dev), Inc. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} <a href="https://vdart.dev/">Vania</a> Powered by <a href="https://persianflutter.com/">Persian Flutter</a>, Inc. Built with Docusaurus.`,
       },
       prism: {
         theme: prismThemes.github,
