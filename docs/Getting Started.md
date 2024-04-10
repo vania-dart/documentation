@@ -20,11 +20,11 @@ dart pub global activate vania_cli
 
 ## Creating a Project ✨
 
-Use the `vania new` command to create a new project.
+Use the `vania create` command to create a new project.
 
 ```shell
 # 🚀 Create a new project called "blog"
-vania new blog
+vania create blog
 ```
 
 ## Start the Dev Server 🏁
@@ -52,3 +52,5 @@ vania build
 :::caution
 For production use, deploy using the provided `Dockerfile` and `docker-compose.yml` files to deploy anywhere.
 :::
+
+Example CRUD API Project [Github](https://github.com/vania-dart/example)

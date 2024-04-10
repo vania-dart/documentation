@@ -1,6 +1,6 @@
 ---
 sidebar_label: 'Responses'
-sidebar_position: 5
+sidebar_position: 6
 ---
 
 # Responses
@@ -12,7 +12,6 @@ Responses are an essential aspect of web development, serving as the server's me
 In Vania, crafting responses is straightforward and versatile, allowing developers to tailor the data and presentation to suit their application's requirements. Whether it involves returning JSON data, rendering HTML content, or serving files for download, Vania offers a comprehensive set of tools for handling various response scenarios seamlessly.
 
 A deep understanding of response construction and manipulation empowers developers to build dynamic and interactive web applications. By effectively managing responses, developers can ensure efficient communication between the server and client, thereby delivering a smooth and satisfactory user experience.
-
 
 All routes and controllers should return a `Response` class to be sent back to the users. Vania provides several ways to return responses:
 

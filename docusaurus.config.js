@@ -8,8 +8,8 @@ import {themes as prismThemes} from 'prism-react-renderer';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Vania Dart backend framework ',
-  tagline: 'Vania Fast, simple, and powerful backend framework for Dart',
+  title: 'Vania Dart',
+  tagline: 'Fast, Simple and Powerful Backend Framework',
   favicon: 'img/logo.png',
 
   // Set the production url of your site here
@@ -21,7 +21,7 @@ const config = {
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'Vania', // Usually your GitHub org/user name.
-  projectName: 'Vania-Dart', // Usually your repo name.
+  projectName: 'vania', // Usually your repo name.
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -44,14 +44,7 @@ const config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/vania-dart/documentation/tree/main',
-        },
-        blog: {
-          showReadingTime: true,
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/vania-dart/documentation/tree/main',
+            'https://github.com/vania-dart/documentation/blob/main',
         },
         theme: {
           customCss: './src/css/custom.css',
@@ -63,11 +56,12 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-      image: 'img/logo.jpg',
+      // Replace with your project's social card
+      image: 'img/logo.png',
       navbar: {
-        title: 'Vania',
+        title: 'Vania Dart',
         logo: {
-          alt: 'Logo',
+          alt: 'Vdart',
           src: 'img/logo.png',
         },
         items: [
@@ -88,7 +82,7 @@ const config = {
         style: 'dark',
         links: [
           {
-            title: 'Docs',
+            title: 'Doc',
             items: [
               {
                 label: 'Documentation',
@@ -101,15 +95,15 @@ const config = {
             items: [
               {
                 label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/vania-dart',
+                href: 'https://stackoverflow.com/questions/tagged/vania',
               },
               {
                 label: 'Discord',
-                href: 'https://discordapp.com/invite/vania-dart',
+                href: 'https://discord.com/channels/1209463292897132604/1209463293614362656',
               },
               {
                 label: 'Twitter',
-                href: 'https://twitter.com/vania-dart',
+                href: 'https://twitter.com/vania_dart',
               },
             ],
           },
@@ -118,12 +112,12 @@ const config = {
             items: [
               {
                 label: 'GitHub',
-                href: 'https://github.com/vania-dart/framework',
+                href: 'https://github.com/facebook/vaniadart',
               },
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} <a href="https://vdart.dev/">Vania</a> Powered by <a href="https://persianflutter.com/">Persian Flutter</a>, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} <a href='https://www.vania.dev'>Vania Dart</a>, Inc. Built with Docusaurus.`,
       },
       prism: {
         theme: prismThemes.github,

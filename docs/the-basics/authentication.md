@@ -1,6 +1,6 @@
 ---
 sidebar_label: 'Authentication'
-sidebar_position: 7
+sidebar_position: 10
 ---
 
 # Authentication

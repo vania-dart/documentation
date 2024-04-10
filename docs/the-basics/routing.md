@@ -25,7 +25,7 @@ import 'package:vania/vania.dart';
 class ApiRoute implements Route{
   @override
   void register() {
-    Router().basePrefix('api');
+    Router.basePrefix('api');
    // Routers
   }
 }
@@ -48,7 +48,7 @@ Usage:
 
 ```dart
 
-Router().basePrefix('api');
+Router.basePrefix('api');
 
 ```
 

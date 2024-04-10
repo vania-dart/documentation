@@ -236,13 +236,13 @@ Sometimes you may need to manually merge additional input into the request's exi
 
 ## Retrieving Uploaded Files
 
-You may retrieve uploaded files from an Request, The file method returns an instance of the RequestFile class:
+You may retrieve uploaded files from an Request, The file method returns an instance of the [RequestFile](/docs/the-basics/request_file) class:
 
 ```dart
     RequestFile? file = $request->file('photo');
 ```
 
-Or you can upload list of files with adding '[]' to your client upload field name and retrieve list of RequestFile:
+Or you can upload list of files with adding '[]' to your client upload field name `file[]` and retrieve list of RequestFile:
 
 ```dart
     List<RequestFile> file = $request->files('file');
