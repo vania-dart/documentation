@@ -1,42 +1,50 @@
 ---
-sidebar_label: 'Authentication'
+id: authentication
+title: Authentication
 sidebar_position: 10
 ---
 
-# Authentication
-
 ## Introduction
 
-Authentication is fundamental to web applications, ensuring secure access for users. In Vania, simplicity, security, and efficiency are paramount in implementing authentication features within your application.
+Authentication is fundamental to web applications, ensuring secure access for users. In Vania, simplicity, security, and
+efficiency are paramount in implementing authentication features within your application.
 
-Vania's authentication system revolves around two key components: guards and providers. These elements work harmoniously to authenticate users and regulate access to different parts of your application.
+Vania's authentication system revolves around two key components: guards and providers. These elements work harmoniously
+to authenticate users and regulate access to different parts of your application.
 
-Guards act as the guardians of authentication, determining how users are verified for each request they make. Providers, on the other hand, furnish the necessary user information and authentication mechanisms to the guards, ensuring a robust authentication process.
+Guards act as the guardians of authentication, determining how users are verified for each request they make. Providers,
+on the other hand, furnish the necessary user information and authentication mechanisms to the guards, ensuring a robust
+authentication process.
 
 Vania utilizes JSON Web Tokens (JWT) for authentication, offering a modern and secure approach to user validation
 
-To configure authentication settings in your Vania application, you'll interact primarily with the `auth.php` configuration file located in the `config` directory. This centralized configuration hub empowers you to tailor authentication parameters to your application's unique needs.
+To configure authentication settings in your Vania application, you'll interact primarily with the `auth.php`
+configuration file located in the `config` directory. This centralized configuration hub empowers you to tailor
+authentication parameters to your application's unique needs.
 
-Whether you're a seasoned developer or new to web development, Vania's authentication system is crafted to simplify the implementation process while upholding stringent security standards. With Vania, you can confidently deploy authentication features that meet user expectations and fortify your application against potential threats.
+Whether you're a seasoned developer or new to web development, Vania's authentication system is crafted to simplify the
+implementation process while upholding stringent security standards. With Vania, you can confidently deploy
+authentication features that meet user expectations and fortify your application against potential threats.
 
 ## Authentication Quickstart
 
-First, you need to prepare your configuration and specify your provider. The provider refers to your model, which will supply user information during authentication.
+First, you need to prepare your configuration and specify your provider. The provider refers to your model, which will
+supply user information during authentication.
 
 ```dart
 Map<String, dynamic> authConfig = {
   'guards': {
     'default': {
-      'provider': User(),
-    },
+      'provider': User()
+    }
   }
 };
-
 ```
 
 ## Authenticating User and Obtaining Authentication Token
 
-To authenticate a user in Vania, you'll first need to retrieve the user data from the model (provider) and then set it as the authenticated user using the `Auth` class. Here's how you can achieve this:
+To authenticate a user in Vania, you'll first need to retrieve the user data from the model (provider) and then set it
+as the authenticated user using the `Auth` class. Here's how you can achieve this:
 
 ```dart
 // Retrieve user data from the model (provider)
@@ -86,9 +94,12 @@ If you want to get the refresh token you can set withRefreshToken `true`
 
 ## Integrating with Third-Party Databases
 
-If you're utilizing a third-party database as your primary database, you can configure the provider setting in the configuration file to `null`. This allows you to seamlessly integrate with external databases while still leveraging Vania's authentication system.
+If you're utilizing a third-party database as your primary database, you can configure the provider setting in the
+configuration file to `null`. This allows you to seamlessly integrate with external databases while still leveraging
+Vania's authentication system.
 
-Once configured, you can utilize the `check` method of the Auth class. This method requires passing the user data as a map:
+Once configured, you can utilize the `check` method of the Auth class. This method requires passing the user data as a
+map:
 
 ```dart
 await Auth().check(token, userPayload);
@@ -96,7 +107,8 @@ await Auth().check(token, userPayload);
 
 ## Protecting Routes
 
-You can use route middleware to restrict access to authenticated users only. Here's an example of how to protect routes using middleware:
+You can use route middleware to restrict access to authenticated users only. Here's an example of how to protect routes
+using middleware:
 
 ```dart
 Router.get("/home", homeController.index)
@@ -107,7 +119,9 @@ In this example, the `AuthenticateMiddleware` ensures that only authenticated us
 
 ## Retrieving the Authenticated User
 
-Once authentication is successfully completed, you can retrieve information about the authenticated user using simple methods provided by Vania. These methods allow you to access user details, such as their ID, name, or any other relevant information stored in the authentication system.
+Once authentication is successfully completed, you can retrieve information about the authenticated user using simple
+methods provided by Vania. These methods allow you to access user details, such as their ID, name, or any other relevant
+information stored in the authentication system.
 
 You can utilize these methods anywhere in your controller or closure:
 

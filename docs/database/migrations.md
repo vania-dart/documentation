@@ -1,30 +1,38 @@
 ---
-sidebar_label: 'Migrations'
+id: migrations
+title: Migrations
 sidebar_position: 3
 ---
 
-
 # Introduction
 
-Migrations are like version control for your database, allowing your team to define and share the application's database schema definition. If you have ever had to tell a teammate to manually add a column to their local database schema after pulling in your changes from source control, you've faced the problem that database migrations solve.
+Migrations are like version control for your database, allowing your team to define and share the application's database
+schema definition. If you have ever had to tell a teammate to manually add a column to their local database schema after
+pulling in your changes from source control, you've faced the problem that database migrations solve.
 
 ## Generating Migrations
 
-You may use the make:migration Vania-cli command to generate a database migration. The new migration will be placed in your database/migrations directory:
+You may use the make:migration Vania-cli command to generate a database migration. The new migration will be placed in
+your database/migrations directory:
 
 ```shell
- vania make:migration create_posts_table
+vania make:migration create_posts_table
 ```
 
-Vania-cli will use the name of the migration to attempt to guess the name of the table and whether or not the migration will be creating a new table, If Vania-cli is able to determine the table name from the migration name, Vania-cli will pre-fill the generated migration file with the specified table. Otherwise, you may simply specify the table in the migration file manually.
+Vania-cli will use the name of the migration to attempt to guess the name of the table and whether the migration
+will be creating a new table, If Vania-cli is able to determine the table name from the migration name, Vania-cli will
+pre-fill the generated migration file with the specified table. Otherwise, you may simply specify the table in the
+migration file manually.
 
 ## Migration Structure
 
-A migration class extends Migration base class from Vania and contains constructor, the constructor contains up method. The up method is used to add new tables, columns, or indexes to your database
+A migration class extends Migration base class from Vania and contains constructor, the constructor contains up method.
+The up method is used to add new tables, columns, or indexes to your database
 
 ## Configuring the Database Connection
 
-In `config/database.dart`, you can specify your database information such as host, port, username, password, and database name.
+In `config/database.dart`, you can specify your database information such as host, port, username, password, and
+database name.
 
 ```dart
 DatabaseConfig databaseConfig = DatabaseConfig(
@@ -38,7 +46,6 @@ DatabaseConfig databaseConfig = DatabaseConfig(
 ```
 
 :::info
-
 If your MySQL server doesn't support SSL mode you can add `sslmode: false` in the config
 
 Default is true
@@ -50,29 +57,30 @@ DatabaseConfig databaseConfig = DatabaseConfig(
     database: 'vania',
     username: 'root',
     password: '123456',
-    port: 3306,
-    sslmode:false
+    sslmode: false,
+    port: 3306
 );
 ```
-
 :::
 
 :::info
 If you change the variable name databaseConfig, make sure to update it in the database/migrate.dart file as well.
 :::
 
-After configuring your database, you need to place the databaseConfig variable in config/app.dart within the database section of the config map variable. The value associated with the 'database' key, which is currently null, should be replaced with databaseConfig.
+After configuring your database, you need to place the databaseConfig variable in config/app.dart within the database
+section of the config map variable. The value associated with the 'database' key, which is currently null, should be
+replaced with databaseConfig.
 
 Before:
 
 ```dart
-'database': null,
+'database': null
 ```
 
 After:
 
 ```dart
-'database': databaseConfig,
+'database': databaseConfig
 ```
 
 ## Running Migrations
@@ -85,7 +93,8 @@ vania migrate
 
 ## Creating Tables
 
-To create a new database table, use the createTableNotExists or createTable  method. These methods accepts two arguments: the first is the name of the table, while the second is a closure:
+To create a new database table, use the createTableNotExists or createTable method. These methods accept two arguments:
+the first is the name of the table, while the second is a closure:
 
 The function `createTableNotExists` first checks if the table does not exist, and then tries to create the table
 
@@ -93,12 +102,12 @@ The function `createTable` first drops the old table and then tries to create a 
 
 ```dart
 await createTableNotExists('TableName', () {
-      id();
-    });
+  id();
+});
 
 await createTable('TableName', () {
-      id();
-    });
+  id();
+});
 ```
 
 When creating the table, you may use any of the column methods to define the table's columns.
@@ -110,7 +119,7 @@ When creating the table, you may use any of the column methods to define the tab
 The bigIncrements method creates an auto-incrementing UNSIGNED BIGINT (primary key) equivalent column:
 
 ```dart
-bigIncrements('id')
+bigIncrements('id');
 ```
 
 ### bigInt()
@@ -118,7 +127,7 @@ bigIncrements('id')
 The bigInt method creates a BIGINT equivalent column:
 
 ```dart
-bigInt('votes')
+bigInt('votes');
 ```
 
 ### binary()
@@ -126,7 +135,7 @@ bigInt('votes')
 The binary method creates a BLOB equivalent column:
 
 ```dart
-binary('photo')
+binary('photo');
 ```
 
 ### char()
@@ -134,7 +143,7 @@ binary('photo')
 The char method creates a CHAR equivalent column with of a given length:
 
 ```dart
-char('name',length: 100)
+char('name', length: 100);
 ```
 
 ### dateTime()
@@ -142,7 +151,7 @@ char('name',length: 100)
 The dateTime method creates a DATETIME equivalent
 
 ```dart
-dateTime('created_at')
+dateTime('created_at');
 ```
 
 ### date()
@@ -150,15 +159,16 @@ dateTime('created_at')
 The date method creates a DATE equivalent column:
 
 ```dart
-date('created_at')
+date('created_at');
 ```
 
 ### decimal()
 
-The decimal method creates a DECIMAL equivalent column with the given precision (total digits) and scale (decimal digits):
+The decimal method creates a DECIMAL equivalent column with the given precision (total digits) and scale (decimal
+digits):
 
 ```dart
-decimal('amount',precision:8,scale:2)
+decimal('amount', precision: 8, scale: 2);
 ```
 
 ### double()
@@ -166,7 +176,7 @@ decimal('amount',precision:8,scale:2)
 The double method creates a DOUBLE equivalent column with the given precision (total digits) and scale (decimal digits):
 
 ```dart
-double('amount',precision:8,scale:2)
+double('amount', precision: 8, scale: 2);
 ```
 
 ### enumType()
@@ -174,7 +184,7 @@ double('amount',precision:8,scale:2)
 The enum method creates a ENUM equivalent column with the given valid values:
 
 ```dart
-enumType('difficulty', enumValues: ['easy', 'hard'])
+enumType('difficulty', enumValues: ['easy', 'hard']);
 ```
 
 ### float()
@@ -182,7 +192,7 @@ enumType('difficulty', enumValues: ['easy', 'hard'])
 The float method creates a FLOAT equivalent column with the given precision (total digits) and scale (decimal digits):
 
 ```dart
-float('amount',precision:8,scale:2)
+float('amount', precision: 8, scale: 2);
 ```
 
 ### foreign()
@@ -209,7 +219,7 @@ and set to 'CASCADE' on delete.
 The geometryCollection method creates a GEOMETRYCOLLECTION equivalent column:
 
 ```dart
-geometryCollection('positions')
+geometryCollection('positions');
 ```
 
 ### geometry()
@@ -217,15 +227,16 @@ geometryCollection('positions')
 The geometry method creates a GEOMETRY equivalent column:
 
 ```dart
-geometry('positions')
+geometry('positions');
 ```
 
 ### id()
 
-The id method is an alias of the bigIncrements method. By default, the method will create an id column; however, you may pass a column name if you would like to assign a different name to the column:
+The id method is an alias of the bigIncrements method. By default, the method will create an id column; however, you may
+pass a column name if you would like to assign a different name to the column:
 
 ```dart
-id()
+id();
 ```
 
 ### integer()
@@ -233,7 +244,7 @@ id()
 The integer method creates an INTEGER equivalent column:
 
 ```dart
-integer('votes')
+integer('votes');
 ```
 
 ### json()
@@ -241,7 +252,7 @@ integer('votes')
 The json method creates a JSON equivalent column:
 
 ```dart
-json('options')
+json('options');
 ```
 
 ### lineString()
@@ -249,7 +260,7 @@ json('options')
 The lineString method creates a LINESTRING equivalent column:
 
 ```dart
-lineString('positions')
+lineString('positions');
 ```
 
 ### longText()
@@ -257,7 +268,7 @@ lineString('positions')
 The longText method creates a LONGTEXT equivalent column:
 
 ```dart
-longText('description')
+longText('description');
 ```
 
 ### mediumInt()
@@ -265,7 +276,7 @@ longText('description')
 The mediumInt method creates a MEDIUMINT equivalent column:
 
 ```dart
-mediumInt('votes')
+mediumInt('votes');
 ```
 
 ### mediumText()
@@ -273,7 +284,7 @@ mediumInt('votes')
 The mediumText method creates a MEDIUMTEXT equivalent column:
 
 ```dart
-mediumText('description')
+mediumText('description');
 ```
 
 ### multiLineString()
@@ -281,7 +292,7 @@ mediumText('description')
 The multiLineString method creates a MULTILINESTRING equivalent column:
 
 ```dart
-multiLineString('positions')
+multiLineString('positions');
 ```
 
 ### multiPolygon()
@@ -289,7 +300,7 @@ multiLineString('positions')
 The multiPolygon method creates a MULTIPOLYGON equivalent column:
 
 ```dart
-multiPolygon('positions')
+multiPolygon('positions');
 ```
 
 ### point()
@@ -297,7 +308,7 @@ multiPolygon('positions')
 The point method creates a POINT equivalent column:
 
 ```dart
-point('positions')
+point('positions');
 ```
 
 ### polygon()
@@ -305,7 +316,7 @@ point('positions')
 The polygon method creates a POLYGON equivalent column:
 
 ```dart
-polygon('positions')
+polygon('positions');
 ```
 
 ### set()
@@ -313,7 +324,7 @@ polygon('positions')
 The set method creates a SET equivalent column with the given list of valid values:
 
 ```dart
-set('positions',setValues:[])
+set('positions', setValues: []);
 ```
 
 ### smallInt()
@@ -326,7 +337,8 @@ smallInt('votes');
 
 ### softDeletes()
 
-The softDeletes method adds a nullable deleted_at TIMESTAMP equivalent column. This column is intended to store the deleted_at timestamp:
+The softDeletes method adds a nullable deleted_at TIMESTAMP equivalent column. This column is intended to store the
+deleted_at timestamp:
 
 ```dart
 softDeletes('deleted_at');
@@ -337,7 +349,7 @@ softDeletes('deleted_at');
 The string method creates a VARCHAR equivalent column of the given length:
 
 ```dart
-string('name', length:100);
+string('name', length: 100);
 ```
 
 ### text()

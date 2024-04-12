@@ -1,5 +1,6 @@
 ---
-sidebar_label: Getting Started
+id: getting_started
+title: Getting Started
 sidebar_position: 2
 ---
 
@@ -53,4 +54,4 @@ vania build
 For production use, deploy using the provided `Dockerfile` and `docker-compose.yml` files to deploy anywhere.
 :::
 
-Example CRUD API Project [Github](https://github.com/vania-dart/example)
+Example CRUD API Project [GitHub](https://github.com/vania-dart/example)

@@ -1,13 +1,14 @@
 ---
-sidebar_label: 'Caching'
+id: caching
+title: Caching
 sidebar_position: 8
 ---
 
-# Caching
-
 ## Introduction
 
-Caching is essential for improving the efficiency of data retrieval processes that are CPU-intensive or time-consuming. By storing data temporarily, your application can quickly retrieve this data for subsequent requests. Typical use cases include caching one-time passwords (OTP), database results, and other frequently accessed data.
+Caching is essential for improving the efficiency of data retrieval processes that are CPU-intensive or time-consuming.
+By storing data temporarily, your application can quickly retrieve this data for subsequent requests. Typical use cases
+include caching one-time passwords (OTP), database results, and other frequently accessed data.
 
 ## Configuration
 
@@ -17,16 +18,15 @@ The caching configuration is found in `lib/config/app.dart`.
 
 ### Obtaining a Cache Instance
 
-To use the caching features, obtain an instance of the `Cache` class. This class provides straightforward access to the Vania cache mechanisms:
+To use the caching features, obtain an instance of the `Cache` class. This class provides straightforward access to the
+Vania cache mechanisms:
 
 ```dart
-class UserController extends Controller
-{
-    Future<Response> index() async
-    {
-        String? value = Cache.get('key');
-        return Response.json();
-    }
+class UserController extends Controller {
+  Future<Response> index() async {
+    String? value = Cache.get('key');
+    return Response.json();
+  }
 }
 ```
 
@@ -40,7 +40,8 @@ dynamic value = Cache.get('key');
 
 ## Determining Item Existence
 
-Use the `has` method to check if an item is present in the cache. This method returns `false` if the item is either non-existent or its value is `null`:
+Use the `has` method to check if an item is present in the cache. This method returns `false` if the item is either
+non-existent or its value is `null`:
 
 ```dart
 bool exists = Cache.has('key');
@@ -48,7 +49,8 @@ bool exists = Cache.has('key');
 
 ## Storing Items in the Cache
 
-To store items, use the `put` method. Items can be set to expire after a default duration of one hour or a specified duration:
+To store items, use the `put` method. Items can be set to expire after a default duration of one hour or a specified
+duration:
 
 ```dart
 await Cache.put('otp', otp.toString(), duration: Duration(minutes: 3));
