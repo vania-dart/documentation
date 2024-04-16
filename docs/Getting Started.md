@@ -7,6 +7,10 @@ sidebar_position: 2
 
 Ensure that you have the [Dart SDK](https://dart.dev) installed on your machine.
 
+YouTube Video [Quick Start](https://www.youtube.com/watch?v=k8ol0F4bDKs)
+
+[![Quick Start](http://img.youtube.com/vi/k8ol0F4bDKs/0.jpg)](https://www.youtube.com/watch?v=k8ol0F4bDKs "Quick Start")
+
 :::info
 Vania requires Dart `">=3.0.0 <4.0.0"`
 :::
