@@ -1,10 +1,10 @@
 ---
-sidebar_label: 'Routeing'
+sidebar_label: 'Routing'
 sidebar_position: 1
 ---
 
 
-# Routeing
+# Routing
 
 ## Introduction
 
@@ -104,11 +104,11 @@ Route parameters are always enclosed within {} braces and should consist of alph
 Route groups allow you to share route attributes, such as middleware and prefix, across a large number of routes without needing to define those attributes on each individual route.
 
 ```dart
-Router.group([
+Router.group((){
   Router.get('/', () {}), // https://mysite.com/api/v1/users
   Router.get('/details/{id}', (int id) {}), // https://mysite.com/api/v1/users/details/1
   Router.post('/create',(Request request){}), // https://mysite.com/api/v1/users/create
-], prefix: 'v1/users');
+}, prefix: 'v1/users', middleware: [Authenticate()]);
 ```
 
 ## Route Prefix
