@@ -99,11 +99,11 @@ const config = {
               },
               {
                 label: 'Discord',
-                href: 'https://discord.com/channels/1209463292897132604/1209463293614362656',
+                href: 'https://discord.gg/zmUQEfmcvE',
               },
               {
                 label: 'Twitter',
-                href: 'https://twitter.com/vania_dart',
+                href: 'https://twitter.com/VaniaDartDev',
               },
             ],
           },
@@ -112,12 +112,12 @@ const config = {
             items: [
               {
                 label: 'GitHub',
-                href: 'https://github.com/facebook/vaniadart',
+                href: 'https://github.com/vania-dart/framework',
               },
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} <a href='https://www.vania.dev'>Vania Dart</a>, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} <a href='https://www.vania.dev'>Vania Dart</a>, Built with Docusaurus.`,
       },
       prism: {
         theme: prismThemes.github,
