@@ -128,7 +128,7 @@ Router.group([
   
   Router.post('/create', (Request request){}), // https://mysite.com/api/v1/users/create
   
-], prefix: 'v1/users');
+], prefix: 'v1/users', middleware: [Authenticate()]);
 ```
 
 ## Route Prefix

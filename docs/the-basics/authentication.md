@@ -28,8 +28,7 @@ authentication features that meet user expectations and fortify your application
 
 ## Authentication Quickstart
 
-First, you need to prepare your configuration and specify your provider. The provider refers to your model, which will
-supply user information during authentication.
+First, prepare your configuration and specify your provider. The provider refers to the model that will supply user information during the authentication process.
 
 ```dart
 Map<String, dynamic> authConfig = {
@@ -40,6 +39,24 @@ Map<String, dynamic> authConfig = {
   }
 };
 ```
+
+Next, create a migration for personal access tokens using the command below:
+
+```shell
+vania make:auth
+```
+
+After creating the Auth migration, run the `migrate` command to apply the changes to your database:
+
+```shell
+vania migrate
+```
+
+:::danger
+Ensure that the database information is implemented in the `.env` file.
+:::
+
+This streamlined setup helps integrate authentication capabilities into your application, managing user access and security efficiently.
 
 ## Authenticating User and Obtaining Authentication Token
 
@@ -91,6 +108,20 @@ Map token = Auth()
 :::info
 If you want to get the refresh token you can set withRefreshToken `true`
 :::
+
+## Revoking Tokens
+
+If you need to revoke access from users by deleting tokens, you can use the `deleteCurrentToken` and `deleteTokens` methods.
+
+- The `deleteCurrentToken` method revokes the currently active token used by a session.
+- The `deleteTokens` method revokes all tokens associated with the current user based on their user ID.
+
+```dart
+Auth().deleteCurrentToken();  // Deletes the current token
+Auth().deleteTokens();        // Deletes all tokens for the current user
+```
+
+These methods are essential for managing user sessions and ensuring security, especially in scenarios where immediate token invalidation is required.
 
 ## Integrating with Third-Party Databases
 

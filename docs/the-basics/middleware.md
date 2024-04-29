@@ -76,3 +76,36 @@ Router.group([
 
 ], middleware: [AuthenticateMiddleware(), CustomMiddleware()]);
 ```
+
+## Throttle
+
+To manage the number of requests a client can make to a particular endpoint within a set timeframe, Vania offers a `Throttle` middleware. This is particularly useful for preventing abuse and ensuring fair usage, especially when dealing with external APIs that have their own rate limits.
+
+### Overview
+
+The `Throttle` middleware limits the frequency of requests by allowing you to specify the maximum number of allowed attempts and the time period within which these attempts can occur. Once a client exceeds this limit, further requests are blocked until the time period elapses.
+
+### Example Usage
+
+Here's how you can apply the `Throttle` middleware to an endpoint in your Vania application. This example demonstrates limiting requests to three attempts per minute for a route that sends a one-time password (OTP) to a user:
+
+```dart
+Router.get("/get-otp", () async {
+  // Your logic to send OTP
+}).middleware([Throttle(maxAttempts: 3, duration: Duration(seconds: 60))]);
+```
+
+### Key Parameters
+
+- **maxAttempts**: The maximum number of requests that a client can make to the endpoint during the specified duration.
+- **duration**: The time period (in seconds) for which the rate limit is enforced.
+
+### Implementing Throttle Middleware
+
+To implement the `Throttle` middleware, you need to include it in the middleware array of your route definition. The middleware automatically tracks the number of requests from each client using their IP address and ensures that the request count does not exceed the specified threshold.
+
+When the limit is reached, subsequent requests within the duration period are rejected, and the server can send a response indicating that the rate limit has been exceeded, which helps inform users or external systems to slow down requests.
+
+This feature is critical for maintaining the integrity and availability of your services, especially when integrating with external systems that may penalize or block your access if too many requests are made in a short period.
+
+By properly leveraging the `Throttle` middleware, you can control traffic flow to your application's endpoints, prevent abuse, and ensure compliance with external API rate limits.

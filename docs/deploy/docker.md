@@ -1,7 +1,7 @@
 ---
 id: docker
 title: Docker
-sidebar_position: 6
+sidebar_position: 1
 ---
 
 # Deploying Vania Using Docker
@@ -30,8 +30,12 @@ Ensure that both the `app` and `mysql` containers are up and running without iss
 
 ### 3. Access the Application
 
-The application is now accessible at `http://localhost:8000`. You can also connect to your MySQL database
-at `localhost:3306` using the specified credentials.
+The application is now accessible at `http://your-id:8000`. You can also connect to your MySQL database 
+at `your-id:3306` using the specified credentials.
+
+:::info
+Ensure that the `host` setting in your .env file is configured to `0.0.0.0`.
+:::
 
 ## Updating Your Application
 

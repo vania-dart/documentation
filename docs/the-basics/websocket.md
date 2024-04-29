@@ -6,9 +6,7 @@ sidebar_position: 12
 
 ## Introduction
 
-WebSockets are a powerful tool for enabling real-time communication between clients in your application. With Vania,
-implementing WebSockets is straightforward and efficient. By enabling WebSockets in your `config/app.dart` file, you can
-easily set up real-time communication channels.
+WebSockets are a powerful tool for enabling real-time communication between clients in your application. With Vania, implementing WebSockets is straightforward and efficient. By enabling WebSockets in your `.env` file, you can easily set up real-time communication channels.
 
 In your project's `Route` directory, you'll find a `web_socket.dart` file where you can define WebSocket routes.
 
@@ -125,7 +123,7 @@ To emit to all users in a specific room.
 client.to(String clientId, String event, dynamic payload)
 ```
 
-To emit to a specific session ID.
+To emit to all clients connected to the WebSocket.
 
 ### broadcast
 
