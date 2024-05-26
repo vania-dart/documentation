@@ -80,7 +80,7 @@ Incoming data must adhere to the following JSON format:
 ```json
 {
   "event": "message",
-  "data": "client data"
+  "payload": "client data"
 }
 ```
 
