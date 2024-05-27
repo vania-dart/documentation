@@ -24,56 +24,27 @@ A migration class extends Migration base class from Vania and contains construct
 
 ## Configuring the Database Connection
 
-In `config/database.dart`, you can specify your database information such as host, port, username, password, and database name.
+In `env` file, you can specify your database information such as host, port, username, password, and database name.
 
-```dart
-DatabaseConfig databaseConfig = DatabaseConfig(
-    driver: MysqlDriver(),
-    host: '127.0.0.1',
-    database: 'vania',
-    username: 'root',
-    password: '123456',
-    port: 3306
-);
+```env
+DB_CONNECTION=mysql # databse driver mysql or postgresql or pgsql
+DB_HOST=localhost
+DB_PORT=3306
+DB_DATABASE=vania
+DB_USERNAME=root
+DB_PASSWORD=password
+DB_SSL_MODE=false
+DB_POOL=false
+DB_POOL_SIZE=2
 ```
 
 :::info
 
-If your MySQL server doesn't support SSL mode you can add `sslmode: false` in the config
+If your MySQL server doesn't support SSL mode you can add `DB_SSL_MODE= false` in the config
 
-Default is true
-
-```dart
-DatabaseConfig databaseConfig = DatabaseConfig(
-    driver: MysqlDriver(),
-    host: '127.0.0.1',
-    database: 'vania',
-    username: 'root',
-    password: '123456',
-    port: 3306,
-    sslmode:false
-);
-```
+If you are using PostgresSql you can use DB_PREFIX and DB_SCHEMA too
 
 :::
-
-:::info
-If you change the variable name databaseConfig, make sure to update it in the database/migrate.dart file as well.
-:::
-
-After configuring your database, you need to place the databaseConfig variable in config/app.dart within the database section of the config map variable. The value associated with the 'database' key, which is currently null, should be replaced with databaseConfig.
-
-Before:
-
-```dart
-'database': null,
-```
-
-After:
-
-```dart
-'database': databaseConfig,
-```
 
 ## Running Migrations
 

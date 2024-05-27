@@ -39,22 +39,22 @@ Within each route, you can define event listeners specific to the functionality 
 ```dart
 // Default WebSocket route
 Router.websocket('/ws', (WebSocketEvent event) {
-    event.on('message', (WebSocketClient client, dynamic message) {
+    event.on('message', (WebSocketClient client, dynamic payload) {
         // Handle user-typing event for default route
     });
 });
 
 // WebSocket route for clients
 Router.websocket('/clients', (WebSocketEvent event) {
-    event.on('client-joined', (WebSocketClient client, dynamic message) {
+    event.on('client-joined', (WebSocketClient client, dynamic payload) {
         // Handle client-joined event for clients route
     });
 });
 
 // WebSocket route for admins
 Router.websocket('/admins', (WebSocketEvent event) {
-    event.on('admin-message', (WebSocketClient client, dynamic message) {
-        // Handle admin-message event for admins route
+    event.on('admin-message', (WebSocketClient client, dynamic payload) {
+        // Handle admin-payload event for admins route
     });
 });
 ```
@@ -65,7 +65,7 @@ Within each route, you can define event listeners:
 
 ```dart
 Router.websocket('/ws', (WebSocketEvent event) {
-    event.on('user-typing', (WebSocketClient client, dynamic message) {
+    event.on('user-typing', (WebSocketClient client, dynamic payload) {
         // Handle user-typing event
     });
 });
@@ -80,12 +80,12 @@ Incoming data must adhere to the following JSON format:
 ```json
 {
   "event": "message",
-  "data": "client data"
+  "payload": "client data"
 }
 ```
 
 :::info
-The client data can be either a string or JSON format.
+The payload can be either a string or JSON format.
 :::
 
 ## Client ID
@@ -139,13 +139,14 @@ To allow users to join or leave a room, you can send the following events:
 ```json
 // To join a room
 {
-    "event":"joinRoom",
+    "event":"join-room",
     "room":"unique room name or ID"
 }
 
 // To leave a room
 {
-    "event":"leftRoom",
+    "event":"left-room",
     "room":"unique room name or ID"
 }
+
 ```
