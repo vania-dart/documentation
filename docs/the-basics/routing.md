@@ -105,9 +105,13 @@ Route groups allow you to share route attributes, such as middleware and prefix,
 
 ```dart
 Router.group((){
+
   Router.get('/', () {}); // https://mysite.com/api/v1/users
+
   Router.get('/details/{id}', (int id) {}); // https://mysite.com/api/v1/users/details/1
+
   Router.post('/create',(Request request){}); // https://mysite.com/api/v1/users/create
+
 }, prefix: 'v1/users', middleware: [Authenticate()]);
 ```
 

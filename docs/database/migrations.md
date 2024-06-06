@@ -20,11 +20,11 @@ Vania-cli will use the name of the migration to attempt to guess the name of the
 
 ## Migration Structure
 
-A migration class extends Migration base class from Vania and contains constructor, the constructor contains up method. The up method is used to add new tables, columns, or indexes to your database
+A migration class extends Migration base class from Vania and contains constructor, the constructor contains up method. The up method is used to add new tables, columns, or indexes to your Database
 
 ## Configuring the Database Connection
 
-In `env` file, you can specify your database information such as host, port, username, password, and database name.
+In `env` file, you can specify your Database information such as host, port, username, password, and Database name.
 
 ```env
 DB_CONNECTION=mysql # databse driver mysql or postgresql or pgsql

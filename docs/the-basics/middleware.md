@@ -33,7 +33,7 @@ class CustomMiddleware extends Middleware {
         code: 422
       );
     }
-    next?.handle(req);
+    return next?.handle(req);
   }
 }
 ```

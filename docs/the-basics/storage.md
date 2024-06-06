@@ -11,7 +11,29 @@ You can use the Storage Vania class to store file in `storage/app/public` path i
 
 ## Configuration
 
-The caching config is located in  `lib\config\app.dart`.
+To configure your storage settings, update the `env` file with the appropriate information.
+
+### Local Storage
+
+For local storage, specify the following:
+
+```env
+STORAGE=local
+```
+
+### AWS S3 Storage
+
+To use AWS S3 as your storage solution, update the `env` file with the following details:
+
+```env
+STORAGE=s3
+STORAGE_S3_BUCKET='your-s3-bucket-name'
+STORAGE_S3_SECRET_KEY='your-secret-key'
+STORAGE_S3_ACCESS_KEY='your-access-key'
+STORAGE_S3_REGION='your-region'
+```
+
+Replace the placeholders with your actual AWS S3 credentials and bucket information.
 
 ## Storage Usage
 

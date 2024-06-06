@@ -22,7 +22,11 @@ req.validate({
 }
 ```
 
+In this example, the `name` field is `required`, must be a `string`, and should only contain `alphabetic` characters. The `email` field is `required` and must be a valid `email` address.
+
 ## Validation with Custom Messages
+
+You can also provide custom error messages for validation rules. Here’s how you can do it:
 
 ```dart
 Future<Response> index(Request req) async {
@@ -36,6 +40,8 @@ req.validate({ 'name': 'required|string|alpha', 'email' : 'required|email', },
     });
 }
 ```
+
+In this example, custom messages are provided for each validation rule, making it easier to understand and handle validation errors.
 
 ## Nested Validation
 

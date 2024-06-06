@@ -15,6 +15,18 @@ Effective communication is essential for maintaining client relationships, manag
 
 First, configure your mail server settings in the `.env` file. Vania supports SMTP server or various other email providers too
 
+```env
+MAIL_MAILER="smtp"
+MAIL_HOST="smtp-mail.outlook.com"
+MAIL_PORT="587"
+MAIL_ENCRYPTION=true
+MAIL_USERNAME=vania.note.dart@gmail.com
+MAIL_PASSWORD='armd hlco qzku unae'
+MAIL_FROM_ADDRESS=vania.note.dart@gmail.com
+MAIL_FROM_NAME="Note Vania"
+MAIL_ACCESS_TOKEN=''
+```
+
 ### Supported Drivers
 
 Vania is compatible with multiple email drivers to suit your needs:
@@ -30,10 +42,6 @@ qq
 yahoo
 yandex
 ```
-
-:::warning
-To use the `gmailSaslXoauth2` or `gmailRelaySaslXoauth2` drivers, you must specify an `accessToken` in `lib/config/app.dart` and update it with your actual access token.
-:::
 
 ## Create a Mail Class
 

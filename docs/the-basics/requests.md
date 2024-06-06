@@ -219,11 +219,11 @@ if(request.hasAny(['name','age'])){
 A second closure may be passed to the whenHas method that will be executed if the specified value is not present on the request:
 
 ```dart
-    request.wheeHas('name').then((input){
+request.wheneHas('name').then((input){
 
-    }).onError((error, stackTrace) {
+}).onError((error, stackTrace) {
 
-    });
+});
 ```
 
 ### Merging Additional Input

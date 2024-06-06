@@ -35,7 +35,7 @@ All routes and controllers should return a `Response` class to be sent back to t
 
    ```dart
    Route.get('/', (Request request) {
-       return Response.download('file path for download file');
+       return Response.download('filename',bytes);
    });
    ```
 
@@ -43,6 +43,6 @@ All routes and controllers should return a `Response` class to be sent back to t
 
    ```dart
    Route.get('/', (Request request) {
-       return Response.file('file path for stream file');
+       return Response.file('filename',bytes);
    });
    ```
