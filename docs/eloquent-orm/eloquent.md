@@ -9,10 +9,6 @@ sidebar_position: 4
 
 Vania includes [Eloquent](https://pub.dev/packages/eloquent), an object-relational mapper (ORM) that makes it enjoyable to interact with your database. When using Eloquent, each database table has a corresponding "Model" that is used to interact with that table. In addition to retrieving records from the database table, Eloquent models allow you to insert, update, and delete records from the table as well.
 
-:::caution
-Before getting started, be sure to configure a database connection in your application's `config/database.php` configuration file.
-:::
-
 ## Generating Model Classes
 
 To get started, let's create an Eloquent model. Models typically live in the `app\models` directory and extend the Vania Model class. You may use the make:model Vania command to generate a new model:
@@ -130,6 +126,48 @@ You may also specify a custom key column for the returned array:
 
 ```dart
 final users = await User().query()->pluck('first_name','name')
+```
+
+## Pagination And SimplePagination
+
+### `paginate`
+
+The `paginate` method is used to fetch a paginated set of data. It allows you to specify the number of items per page and the page number. This method returns a detailed pagination object which includes metadata such as total items, total pages, current page, and the data items.
+
+#### Syntax
+
+```dart
+Future<PaginatedResult> paginate([int perPage = 15, int page = 1])
+```
+
+- **perPage** (optional): The number of items to be displayed per page. Defaults to 15.
+- **page** (optional): The page number to retrieve. Defaults to 1.
+
+#### Example Usage
+
+```dart
+final user = await User().query().paginate();
+final user2 = await User().query().where('name','like','%Vania%').paginate(10, 2);
+```
+
+### `simplePagination`
+
+The `simplePagination` method is used to fetch a paginated set of data in a simplified format. It also allows you to specify the number of items per page and the page number. This method returns a simpler pagination object which includes only the data items and basic pagination information.
+
+#### SimplePagination Syntax
+
+```dart
+Future<SimplePaginatedResult> simplePagination([int perPage = 15, int page = 1])
+```
+
+- **perPage** (optional): The number of items to be displayed per page. Defaults to 15.
+- **page** (optional): The page number to retrieve. Defaults to 1.
+
+#### Example Usage simplePagination
+
+```dart
+final user = await User().query().where('name','like','%Vania%').simplePagination();
+final user2 = await User().query().simplePagination(10, 2);
 ```
 
 ## Selects
@@ -396,6 +434,16 @@ Alternatively, you may use the limit and offset methods. These methods are funct
 final users = await User().query().offset(10).limit(5).get();
 ```
 
+## Create and Return Inserted Data
+
+The `create` method not only inserts a new record into the database but also returns the inserted data. This is particularly useful when you need to access the newly created record immediately after insertion.
+
+```dart
+final user = await User().query().create({"email":'info@vdart.dev', "name": "Vania"});
+```
+
+In this example, a new user is created with the specified mobile number and name. The `create` method returns the inserted user data, allowing you to work with it directly after the insertion.
+
 ## Inserts
 
 The Model also provides an `insert` method for inserting records into the database table. The `insert` method accepts a Map of column names and values to insert:
@@ -441,6 +489,19 @@ await User().query()
     .where('id','=',1)
     .delete();
 ```
+
+## DB Transaction
+
+The `DB Transaction` feature in Vania allows you to execute a series of database operations within a single transaction. This ensures that all operations are completed successfully before committing the changes, or rolled back in case of an error, maintaining the integrity of your database.
+
+```dart
+dbTransaction((Connection con) async {
+  await User().query().insert({"email":'info@vdart.dev', "name": "Vania"});
+  await User().query().insert({"email":'dev@vdart.dev', "name": "Dev Vania"});
+});
+```
+
+In the example above, multiple `insert` operations are executed within a transaction. If any of the inserts fail, all changes will be rolled back, ensuring data consistency.
 
 :::note
 Special thanks to [Isaque Neves](https://github.com/insinfo/eloquent_dart) for the helpful Dart Eloquent package.

@@ -99,6 +99,16 @@ Router.get('/posts/{post}/comments/{comment}', (String postId, String commentId)
 
 Route parameters are always enclosed within {} braces and should consist of alphabetic characters. Underscores (_) are also acceptable within route parameter names. Route parameters are injected into route callbacks/controllers based on their order; the names of the route callback/controller arguments do not matter.
 
+## Any
+
+Sometimes you may need to register a route that responds to  all HTTP verbs using the any method:
+
+```dart
+Router.any('/user/{id}', (int id) { // Can accept all request methods ex: POST,GET,PUT,DELETE
+  return Response.html('User id $id');
+});
+```
+
 ## Route Groups
 
 Route groups allow you to share route attributes, such as middleware and prefix, across a large number of routes without needing to define those attributes on each individual route.
@@ -125,6 +135,40 @@ You can use prefixes for single or group router.
 // https://mysite.com/api/users/details/1
 
 Router.get('/details/{id}', (int id) {}).prefix('users');
+```
+
+## Regular Expression Constraints
+
+You may constrain the format of your route parameters using the `where` method on a route instance. The `where` method accepts the name of the parameter and a regular expression defining how the parameter should be constrained:
+
+```dart
+
+Router.get('user/{slug}', (dynamic slug) {
+      return Response.html(slug);
+}).where('slug', r'[a-z0-9-]+'); // Can accept String and int
+
+Router.get('user/{name}', (String name) {
+      return Response.html(name);
+}).where('slug', r'[a-z]+'); // Name must be String
+
+Router.get('user/{id}', (int id) {
+      return Response.html(id);
+}).where('slug', r'[0-9]+'); // Id must be number
+
+```
+
+For convenience, some commonly used regular expression patterns have helper methods that allow you to quickly add pattern constraints to your routes:
+
+```dart
+
+Router.get('user/{name}', (String name) {
+      return Response.html(name);
+}).whereString('name'); // Name must be String
+
+Router.get('user/{id}', (int id) {
+      return Response.html(id);
+}).whereInt('id'); // Id must be number
+
 ```
 
 ## WebSocket

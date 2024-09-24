@@ -42,6 +42,14 @@ Router.websocket('/ws', (WebSocketEvent event) {
     event.on('message', (WebSocketClient client, dynamic payload) {
         // Handle user-typing event for default route
     });
+
+    event.on('connect', (WebSocketClient client, dynamic payload) {
+        // Handle user connect
+    });
+
+    event.on('discconnect', (WebSocketClient client, dynamic payload) {
+        // Handle user disconnect
+    });
 });
 
 // WebSocket route for clients
