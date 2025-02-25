@@ -239,20 +239,21 @@ Sometimes you may need to manually merge additional input into the request's exi
 You may retrieve uploaded files from an Request, The file method returns an instance of the [RequestFile](/docs/the-basics/request_file) class:
 
 ```dart
-    RequestFile? file = $request->file('photo');
+   RequestFile? file = req.file('photo');
 ```
 
 Or you can upload list of files with adding '[]' to your client upload field name `file[]` and retrieve list of RequestFile:
 
 ```dart
-    List<RequestFile> file = $request->files('file');
+    List<RequestFile> file = $request.files('file');
 ``
 
 Storing file in the storage directory
 
 ```dart
-    RequestFile? file = $request->file('photo');
+    RequestFile? file = req.file('photo');
     if(file != null){
-        String path = file.store('app/image','filename.jpg');
+       var bytes = await file.bytes;
+      await File('app/images/${file?.filename}').writeAsBytes(bytes.toList());
     }
 ```
